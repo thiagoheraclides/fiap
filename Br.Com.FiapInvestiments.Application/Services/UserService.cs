@@ -1,6 +1,7 @@
 ﻿using Br.Com.FiapInvestiments.Application.Interfaces;
 using Br.Com.FiapInvestiments.Domain.Entities;
 using Br.Com.FiapInvestiments.Infrastructure.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace Br.Com.FiapInvestiments.Application.Services
 {
@@ -8,18 +9,13 @@ namespace Br.Com.FiapInvestiments.Application.Services
     {
 		private readonly ApiContext _apiContext = apiContext;
 
-        public bool FindByUsernameAndPassword(string username, string password)
+        public async Task<User?> FindByUsernameAndPassword(string username, string password)
         {
 			try
 			{
                 _apiContext.Database.EnsureCreated();
-
-                var isUserValid = _apiContext.Users.FirstOrDefault(u => u.Username == username && u.Password == password);
-				if (isUserValid == null)
-					return false;
-
-				return true;
-			}
+                return await _apiContext.Users.FirstOrDefaultAsync(u => u.Username == username && u.Password == password);
+            }
 			catch (Exception)
 			{
 
@@ -27,14 +23,12 @@ namespace Br.Com.FiapInvestiments.Application.Services
 			}
         }
 
-        public IEnumerable<User> GetUsers()
+        public async Task<IEnumerable<User>> GetUsers()
         {
 			try
 			{
 				_apiContext.Database.EnsureCreated();
-
-				return _apiContext.Users.ToList();
-
+				return await _apiContext.Users.ToListAsync();
 			}
 			catch (Exception)
 			{

@@ -4,7 +4,7 @@ namespace Br.Com.FiapInvestiments.Application.Interfaces
 {
     public interface IUserService
     {
-        bool FindByUsernameAndPassword(string username, string password);
-        IEnumerable<User> GetUsers();
+        Task<User?> FindByUsernameAndPassword(string username, string password);
+        Task<IEnumerable<User>> GetUsers();
     }
 }

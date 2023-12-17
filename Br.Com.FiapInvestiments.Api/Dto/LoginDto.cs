@@ -9,5 +9,6 @@ namespace Br.Com.FiapInvestiments.Api.Dto
 
         [Required(ErrorMessage = "The field {0} is required.")]
         public string Password { get; set; } = null!;
+
     }
 }

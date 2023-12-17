@@ -1,29 +1,36 @@
 ﻿using Br.Com.FiapInvestiments.Api.Dto;
 using Br.Com.FiapInvestiments.Application.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Br.Com.FiapInvestiments.Api.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class AccountController(IUserService userService) : ControllerBase
+    public class AccountController(IUserService userService, ITokenService tokenService) : ControllerBase
     {
         private readonly IUserService _userService = userService;
+        private readonly ITokenService _tokenService = tokenService;
 
+        [AllowAnonymous]
         [HttpPost("Login")]
-        public IActionResult Login([FromBody] LoginDto loginDto)
+        public async Task<IActionResult> Login([FromBody] LoginDto loginDto)
         {
             try
             {
                 if (!ModelState.IsValid)
                     return BadRequest(ModelState);
 
-                var userIsValid = _userService.FindByUsernameAndPassword(loginDto.Username, loginDto.Password);
+                var user = await _userService.FindByUsernameAndPassword(loginDto.Username, loginDto.Password);
 
-                if (!userIsValid)
+                if (user is null)
                     return BadRequest("Invalid credential.");
 
-                return Ok();
+                var token = _tokenService.GetToken(user);
+
+                var authenticatedUser = new { loginDto.Username, Token = token };
+
+                return Ok(authenticatedUser);
             }
             catch (Exception exception)
             {
