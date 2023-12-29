@@ -1,0 +1,36 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Br.Com.FiapInvestiments.Domain.Entidades
+{
+    public class Recomendacao
+    {
+        public uint Id { get; set; }
+
+        public decimal Valor { get; set; } = default;
+
+        public uint Quantidade { get; set; } = default;
+
+        public DateTime Data { get; set; }
+
+        public uint RentabilidadeEmDias { get; set; }
+
+        public string Observacao { get; set; } = null!;
+
+        public uint UsuarioId { get; set; }
+
+        public required Usuario Usuario { get; set; }
+
+        public uint ConsultorId { get; set; }
+
+        public required Usuario Consultor { get; set; }
+
+        public uint AtivoId { get; set; }
+
+        public required Ativo Ativo { get; set; }
+
+    }
+}
