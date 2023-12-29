@@ -1,9 +1,9 @@
-﻿using Br.Com.FiapInvestiments.Domain.Entities;
+﻿using Br.Com.FiapInvestiments.Domain.Entidades;
 
 namespace Br.Com.FiapInvestiments.Application.Interfaces
 {
     public interface ITokenService
     {
-        string GetToken(User user);
+        string GetToken(Usuario usuario);
     }
 }

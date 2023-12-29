@@ -1,5 +1,5 @@
 ﻿using Br.Com.FiapInvestiments.Application.Interfaces;
-using Br.Com.FiapInvestiments.Domain.Entities;
+using Br.Com.FiapInvestiments.Domain.Entidades;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
@@ -12,7 +12,7 @@ namespace Br.Com.FiapInvestiments.Application.Services
     {
         private readonly IConfiguration _configuration = configuration;
 
-        public string GetToken(User user)
+        public string GetToken(Usuario usuario)
         {
             try
             {
@@ -24,8 +24,8 @@ namespace Br.Com.FiapInvestiments.Application.Services
                 {
                     Subject = new ClaimsIdentity(new Claim[]
                     {
-                        new(ClaimTypes.Name, user.Username),
-                        new(ClaimTypes.Role, user.Role.ToString())
+                        new(ClaimTypes.Name, usuario.Login),
+                        new(ClaimTypes.Role, usuario.Perfil.Nome)
 
                     }),
                     Expires = DateTime.UtcNow.AddMinutes(3),

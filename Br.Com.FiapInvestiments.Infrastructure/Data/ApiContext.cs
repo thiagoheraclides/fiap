@@ -3,15 +3,27 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Br.Com.FiapInvestiments.Infrastructure.Data
 {
-    public class ApiContext : DbContext
+    public class ApiContext(DbContextOptions<ApiContext> options) : DbContext(options)
     {
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            optionsBuilder.UseInMemoryDatabase("InMemoryDb");
-        }
+
+        //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        //{
+        //    //optionsBuilder.UseInMemoryDatabase("InMemoryDb");
+        //    string connectionString = _configuration["ConnectionString:PostgreSql"] 
+        //        ?? throw new ArgumentNullException("ConnectionString:PostgreSql");
+
+        //    optionsBuilder.UseNpgsql(connectionString);
+        //}
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<TipoUsuario>()
+                .HasKey(tp => tp.Id);
+
+            modelBuilder.Entity<TipoUsuario>()
+                .Property(tp => tp.Nome);
+                
+    
 
         }
 

@@ -2,6 +2,7 @@ using Br.Com.FiapInvestiments.Application.Interfaces;
 using Br.Com.FiapInvestiments.Application.Services;
 using Br.Com.FiapInvestiments.Infrastructure.Data;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using System.Text;
@@ -44,7 +45,12 @@ builder.Services.AddSwaggerGen(option =>
 
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<ITokenService, TokenService>();
-builder.Services.AddDbContext<ApiContext>(ServiceLifetime.Scoped);
+
+string connectionString = builder.Configuration["ConnectionString:PostgreSql"]
+                ?? throw new ArgumentNullException("ConnectionString:PostgreSql");
+
+builder.Services.AddEntityFrameworkNpgsql()
+    .AddDbContext<ApiContext>(options => options.UseNpgsql(connectionString));
 
 var privateKey = Encoding.ASCII.GetBytes(builder.Configuration["Jwt:Symmetric:Key"]
                     ?? throw new ArgumentNullException("Jwt Symmetric Key"));
