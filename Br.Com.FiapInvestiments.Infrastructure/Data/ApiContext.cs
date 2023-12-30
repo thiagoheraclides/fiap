@@ -16,15 +16,8 @@ namespace Br.Com.FiapInvestiments.Infrastructure.Data
         //}
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
-            modelBuilder.Entity<TipoUsuario>()
-                .HasKey(tp => tp.Id);
-
-            modelBuilder.Entity<TipoUsuario>()
-                .Property(tp => tp.Nome);
-                
-    
-
+        {        
+          
         }
 
         public DbSet<Usuario> Usuarios { get; set; }

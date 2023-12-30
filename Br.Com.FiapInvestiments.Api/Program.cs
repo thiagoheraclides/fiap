@@ -49,8 +49,7 @@ builder.Services.AddScoped<ITokenService, TokenService>();
 string connectionString = builder.Configuration["ConnectionString:PostgreSql"]
                 ?? throw new ArgumentNullException("ConnectionString:PostgreSql");
 
-builder.Services.AddEntityFrameworkNpgsql()
-    .AddDbContext<ApiContext>(options => options.UseNpgsql(connectionString));
+builder.Services.AddDbContext<ApiContext>(options => options.UseNpgsql(connectionString));
 
 var privateKey = Encoding.ASCII.GetBytes(builder.Configuration["Jwt:Symmetric:Key"]
                     ?? throw new ArgumentNullException("Jwt Symmetric Key"));
