@@ -24,7 +24,7 @@ namespace Br.Com.FiapInvestiments.Infrastructure.EFCoreConfig
                 .HasMaxLength(5)
                 .IsRequired();
 
-            builder.Property(p => p.Sigla)
+            builder.Property(p => p.Nome)
                 .HasColumnName("NM_ATIVO_INVESTIMENTO")
                 .HasMaxLength(200)
                 .IsRequired();

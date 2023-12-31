@@ -23,6 +23,14 @@ namespace Br.Com.FiapInvestiments.Infrastructure.EFCoreConfig
                 .HasColumnName("DT_PEDIDO")                
                 .IsRequired();
 
+            builder.Property(p => p.AtivoId)
+                .HasColumnName("CD_ATIVO_INVESTIMENTO")
+                .IsRequired();
+
+            builder.Property(p => p.UsuarioId)
+                .HasColumnName("CD_USUARIO_INVESTIDOR")
+                .IsRequired();
+
             builder.Property(p => p.Quantidade)
                 .HasColumnName("QT_PEDIDO")
                 .IsRequired();

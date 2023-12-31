@@ -28,6 +28,8 @@
 
         public ICollection<Aporte>? Aportes { get; set; }
 
-        public ICollection<Recomendacao>? Recomendacoes { get; set; }
+        public ICollection<Recomendacao>? RecomendacoesUsuario { get; set; }
+
+        public ICollection<Recomendacao>? RecomendacoesConsultor { get; set; }
     }
 }

@@ -22,15 +22,15 @@ namespace Br.Com.FiapInvestiments.Domain.Entidades
 
         public uint UsuarioId { get; set; }
 
-        public required Usuario Usuario { get; set; }
+        public virtual Usuario? Usuario { get; set; }
 
         public uint ConsultorId { get; set; }
 
-        public required Usuario Consultor { get; set; }
+        public virtual Usuario? Consultor { get; set; }
 
         public uint AtivoId { get; set; }
 
-        public required Ativo Ativo { get; set; }
+        public Ativo? Ativo { get; set; }
 
     }
 }

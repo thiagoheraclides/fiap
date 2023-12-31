@@ -20,7 +20,7 @@ namespace Br.Com.FiapInvestiments.Infrastructure.EFCoreConfig
                 .IsRequired();
 
             builder.Property(u => u.Cpf)
-                .HasColumnName("CD_TIPO_USUARIO")
+                .HasColumnName("NR_CPF")
                 .HasMaxLength(11)
                 .IsRequired();
 
@@ -45,6 +45,14 @@ namespace Br.Com.FiapInvestiments.Infrastructure.EFCoreConfig
 
             builder.Property(u => u.UltimoAcesso)
                 .HasColumnName("DT_ULTIMO_ACESSO");
+
+            builder.Property(u => u.TipoUsuarioId)
+                .HasColumnName("CD_TIPO_USUARIO")                
+                .IsRequired();
+
+            builder.Property(u => u.PerfilId)
+                .HasColumnName("CD_PERFIL_INVESTIDOR")                
+                .IsRequired();
 
             builder
                 .HasOne(u => u.TipoUsuario)

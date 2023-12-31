@@ -1,4 +1,5 @@
 ﻿using Br.Com.FiapInvestiments.Domain.Entidades;
+using Br.Com.FiapInvestiments.Infrastructure.EFCoreConfig;
 using Microsoft.EntityFrameworkCore;
 
 namespace Br.Com.FiapInvestiments.Infrastructure.Data
@@ -6,18 +7,15 @@ namespace Br.Com.FiapInvestiments.Infrastructure.Data
     public class ApiContext(DbContextOptions<ApiContext> options) : DbContext(options)
     {
 
-        //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        //{
-        //    //optionsBuilder.UseInMemoryDatabase("InMemoryDb");
-        //    string connectionString = _configuration["ConnectionString:PostgreSql"] 
-        //        ?? throw new ArgumentNullException("ConnectionString:PostgreSql");
-
-        //    optionsBuilder.UseNpgsql(connectionString);
-        //}
-
         protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {        
-          
+        {
+            modelBuilder.ApplyConfiguration(new TipoUsuarioConfig());
+            modelBuilder.ApplyConfiguration(new PerfilConfig());
+            modelBuilder.ApplyConfiguration(new UsuarioConfig());
+            modelBuilder.ApplyConfiguration(new AtivoConfig());
+            modelBuilder.ApplyConfiguration(new PedidoConfig());
+            modelBuilder.ApplyConfiguration(new AporteConfig());
+            modelBuilder.ApplyConfiguration(new RecomendacaoConfig());
         }
 
         public DbSet<Usuario> Usuarios { get; set; }
