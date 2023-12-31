@@ -16,20 +16,20 @@
 
         public DateTime UltimoAcesso { get; set; }
 
-        public uint PerfilId { get; set; }
+        public uint? PerfilId { get; set; }
 
-        public required Perfil Perfil { get; set; }
+        public virtual Perfil? Perfil { get; set; }
 
-        public uint TipoUsuarioId { get; set; }
+        public uint? TipoUsuarioId { get; set; }
 
-        public required TipoUsuario TipoUsuario { get; set; }
+        public virtual TipoUsuario? TipoUsuario { get; set; }
 
-        public ICollection<Pedido>? Pedidos { get; set; }
+        public virtual ICollection<Pedido>? Pedidos { get; set; }
 
-        public ICollection<Aporte>? Aportes { get; set; }
+        public virtual ICollection<Aporte>? Aportes { get; set; }
 
-        public ICollection<Recomendacao>? RecomendacoesUsuario { get; set; }
+        public virtual ICollection<Recomendacao>? RecomendacoesUsuario { get; set; }
 
-        public ICollection<Recomendacao>? RecomendacoesConsultor { get; set; }
+        public virtual ICollection<Recomendacao>? RecomendacoesConsultor { get; set; }
     }
 }

@@ -47,12 +47,12 @@ namespace Br.Com.FiapInvestiments.Infrastructure.EFCoreConfig
                 .HasColumnName("DT_ULTIMO_ACESSO");
 
             builder.Property(u => u.TipoUsuarioId)
-                .HasColumnName("CD_TIPO_USUARIO")                
+                .HasColumnName("CD_TIPO_USUARIO")
                 .IsRequired();
 
             builder.Property(u => u.PerfilId)
-                .HasColumnName("CD_PERFIL_INVESTIDOR")                
-                .IsRequired();
+                .HasColumnName("CD_PERFIL_INVESTIDOR")
+                .IsRequired(false);
 
             builder
                 .HasOne(u => u.TipoUsuario)
@@ -66,7 +66,7 @@ namespace Br.Com.FiapInvestiments.Infrastructure.EFCoreConfig
                 .WithMany(u => u.Usuarios)
                 .HasConstraintName("FK_PERFIL_INVESTIDOR")
                 .HasForeignKey(u => u.PerfilId)
-                .IsRequired();
+                .IsRequired(false);
 
             builder
                 .HasIndex(u => u.Cpf)

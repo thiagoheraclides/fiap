@@ -19,6 +19,6 @@ namespace Br.Com.FiapInvestiments.Domain.Entidades
 
         public DateTime CriadoEm { get; set; } = DateTime.UtcNow;
 
-        public ICollection<Usuario>? Usuarios { get; set; }
+        public virtual ICollection<Usuario>? Usuarios { get; set; }
     }
 }

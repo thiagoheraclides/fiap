@@ -75,7 +75,7 @@ namespace Br.Com.FiapInvestiments.Infrastructure.Migrations
                     DS_LOGIN = table.Column<string>(type: "character varying(50)", maxLength: 50, nullable: false),
                     TX_SENHA = table.Column<string>(type: "character varying(200)", maxLength: 200, nullable: false),
                     DT_ULTIMO_ACESSO = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
-                    CD_PERFIL_INVESTIDOR = table.Column<long>(type: "bigint", nullable: false),
+                    CD_PERFIL_INVESTIDOR = table.Column<long>(type: "bigint", nullable: true),
                     CD_TIPO_USUARIO = table.Column<long>(type: "bigint", nullable: false)
                 },
                 constraints: table =>
@@ -85,8 +85,7 @@ namespace Br.Com.FiapInvestiments.Infrastructure.Migrations
                         name: "FK_PERFIL_INVESTIDOR",
                         column: x => x.CD_PERFIL_INVESTIDOR,
                         principalTable: "TB_PERFIL_INVESTIDOR",
-                        principalColumn: "CD_PERFIL_INVESTIDOR",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "CD_PERFIL_INVESTIDOR");
                     table.ForeignKey(
                         name: "FK_TIPO_USUARIO",
                         column: x => x.CD_TIPO_USUARIO,

@@ -25,7 +25,7 @@ namespace Br.Com.FiapInvestiments.Application.Services
                     Subject = new ClaimsIdentity(new Claim[]
                     {
                         new(ClaimTypes.Name, usuario.Login),
-                        new(ClaimTypes.Role, usuario.Perfil.Nome)
+                        new(ClaimTypes.Role, usuario.TipoUsuario.Nome)
 
                     }),
                     Expires = DateTime.UtcNow.AddMinutes(3),

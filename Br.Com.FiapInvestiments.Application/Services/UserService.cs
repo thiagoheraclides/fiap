@@ -14,7 +14,7 @@ namespace Br.Com.FiapInvestiments.Application.Services
 			try
 			{
                 _apiContext.Database.EnsureCreated();
-                return await _apiContext.Usuarios.FirstOrDefaultAsync(u => u.Login == username && u.Senha == password);
+				return await _apiContext.Usuarios.FirstOrDefaultAsync(u => u.Login == username && u.Senha == password);
             }
 			catch (Exception)
 			{

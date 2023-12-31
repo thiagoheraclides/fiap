@@ -7,13 +7,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{8983134B-B14
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{C2F619E4-9833-4D60-B642-073D7AA2A0D5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Br.Com.FiapInvestiments.Domain", "Br.Com.FiapInvestiments.Domain\Br.Com.FiapInvestiments.Domain.csproj", "{72FBDF62-C610-4851-9415-219B008BDB95}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Br.Com.FiapInvestiments.Domain", "Br.Com.FiapInvestiments.Domain\Br.Com.FiapInvestiments.Domain.csproj", "{72FBDF62-C610-4851-9415-219B008BDB95}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Br.Com.FiapInvestiments.Application", "Br.Com.FiapInvestiments.Application\Br.Com.FiapInvestiments.Application.csproj", "{AB995AFB-38B3-439D-9E1B-3593BB7C04A1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Br.Com.FiapInvestiments.Application", "Br.Com.FiapInvestiments.Application\Br.Com.FiapInvestiments.Application.csproj", "{AB995AFB-38B3-439D-9E1B-3593BB7C04A1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Br.Com.FiapInvestiments.Infrastructure", "Br.Com.FiapInvestiments.Infrastructure\Br.Com.FiapInvestiments.Infrastructure.csproj", "{334A14F9-EE00-4D29-84A9-6A444BEA3904}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Br.Com.FiapInvestiments.Infrastructure", "Br.Com.FiapInvestiments.Infrastructure\Br.Com.FiapInvestiments.Infrastructure.csproj", "{334A14F9-EE00-4D29-84A9-6A444BEA3904}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Br.Com.FiapInvestiments.Api", "Br.Com.FiapInvestiments.Api\Br.Com.FiapInvestiments.Api.csproj", "{E0DAC86F-D025-4709-9BC5-ED96FBF40C75}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Br.Com.FiapInvestiments.Api", "Br.Com.FiapInvestiments.Api\Br.Com.FiapInvestiments.Api.csproj", "{E0DAC86F-D025-4709-9BC5-ED96FBF40C75}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Br.Com.FiapInvestiments.Tests", "Br.Com.FiapInvestiments.Tests\Br.Com.FiapInvestiments.Tests.csproj", "{FBFE8211-BCD7-4070-87E4-ED033A2C5A2C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -37,6 +39,10 @@ Global
 		{E0DAC86F-D025-4709-9BC5-ED96FBF40C75}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E0DAC86F-D025-4709-9BC5-ED96FBF40C75}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E0DAC86F-D025-4709-9BC5-ED96FBF40C75}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FBFE8211-BCD7-4070-87E4-ED033A2C5A2C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FBFE8211-BCD7-4070-87E4-ED033A2C5A2C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FBFE8211-BCD7-4070-87E4-ED033A2C5A2C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FBFE8211-BCD7-4070-87E4-ED033A2C5A2C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -46,6 +52,7 @@ Global
 		{AB995AFB-38B3-439D-9E1B-3593BB7C04A1} = {8983134B-B140-4593-A4D2-56375A734625}
 		{334A14F9-EE00-4D29-84A9-6A444BEA3904} = {8983134B-B140-4593-A4D2-56375A734625}
 		{E0DAC86F-D025-4709-9BC5-ED96FBF40C75} = {8983134B-B140-4593-A4D2-56375A734625}
+		{FBFE8211-BCD7-4070-87E4-ED033A2C5A2C} = {C2F619E4-9833-4D60-B642-073D7AA2A0D5}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {DB1BCE9D-3E7F-4D3C-A8C0-3039805FC312}

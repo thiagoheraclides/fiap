@@ -1,3 +1,4 @@
+using Br.Com.FiapInvestiments.Api.Seed;
 using Br.Com.FiapInvestiments.Application.Interfaces;
 using Br.Com.FiapInvestiments.Application.Services;
 using Br.Com.FiapInvestiments.Infrastructure.Data;
@@ -6,12 +7,16 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using System.Text;
+using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
-builder.Services.AddControllers();
+builder.Services
+    .AddControllers()
+    .AddJsonOptions(ctrl => ctrl.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
+
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(option =>
@@ -49,7 +54,10 @@ builder.Services.AddScoped<ITokenService, TokenService>();
 string connectionString = builder.Configuration["ConnectionString:PostgreSql"]
                 ?? throw new ArgumentNullException("ConnectionString:PostgreSql");
 
-builder.Services.AddDbContext<ApiContext>(options => options.UseNpgsql(connectionString));
+builder.Services.AddDbContext<ApiContext>(options 
+    => options
+    .UseLazyLoadingProxies()
+    .UseNpgsql(connectionString));
 
 var privateKey = Encoding.ASCII.GetBytes(builder.Configuration["Jwt:Symmetric:Key"]
                     ?? throw new ArgumentNullException("Jwt Symmetric Key"));
@@ -77,9 +85,10 @@ var app = builder.Build();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
-{
+{    
     app.UseSwagger();
     app.UseSwaggerUI();
+    app.ContextSeed();
 }
 
 app.UseHttpsRedirection();

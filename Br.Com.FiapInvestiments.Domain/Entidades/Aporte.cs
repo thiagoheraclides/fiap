@@ -16,8 +16,8 @@ namespace Br.Com.FiapInvestiments.Domain.Entidades
 
         public string Observacao { get; set; } = null!;
 
-        public uint UsuarioId { get; set; }
+        public uint? UsuarioId { get; set; }
 
-        public required Usuario Usuario { get; set; }
+        public virtual Usuario? Usuario { get; set; }
     }
 }

@@ -313,7 +313,7 @@ namespace Br.Com.FiapInvestiments.Infrastructure.Migrations
                         .HasColumnType("character varying(300)")
                         .HasColumnName("NM_USUARIO");
 
-                    b.Property<long>("PerfilId")
+                    b.Property<long?>("PerfilId")
                         .HasColumnType("bigint")
                         .HasColumnName("CD_PERFIL_INVESTIDOR");
 
@@ -417,8 +417,6 @@ namespace Br.Com.FiapInvestiments.Infrastructure.Migrations
                     b.HasOne("Br.Com.FiapInvestiments.Domain.Entidades.Perfil", "Perfil")
                         .WithMany("Usuarios")
                         .HasForeignKey("PerfilId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired()
                         .HasConstraintName("FK_PERFIL_INVESTIDOR");
 
                     b.HasOne("Br.Com.FiapInvestiments.Domain.Entidades.TipoUsuario", "TipoUsuario")

@@ -24,9 +24,9 @@ namespace Br.Com.FiapInvestiments.Domain.Entidades
 
         public ushort EscalaDeRisco { get; set; } = default;
 
-        public ICollection<Pedido>? Pedidos { get; set; }
+        public virtual ICollection<Pedido>? Pedidos { get; set; }
 
-        public ICollection<Recomendacao>? Recomendacoes { get; set; }
+        public virtual ICollection<Recomendacao>? Recomendacoes { get; set; }
 
     }
 }

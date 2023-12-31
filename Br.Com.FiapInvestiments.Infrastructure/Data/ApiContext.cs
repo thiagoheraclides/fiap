@@ -15,7 +15,7 @@ namespace Br.Com.FiapInvestiments.Infrastructure.Data
             modelBuilder.ApplyConfiguration(new AtivoConfig());
             modelBuilder.ApplyConfiguration(new PedidoConfig());
             modelBuilder.ApplyConfiguration(new AporteConfig());
-            modelBuilder.ApplyConfiguration(new RecomendacaoConfig());
+            modelBuilder.ApplyConfiguration(new RecomendacaoConfig());            
         }
 
         public DbSet<Usuario> Usuarios { get; set; }
