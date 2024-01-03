@@ -36,5 +36,10 @@ namespace Br.Com.FiapInvestiments.Application.Services
 				throw;
 			}
         }
+
+        public Task Inserir(Usuario usuario)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

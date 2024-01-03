@@ -50,6 +50,9 @@ builder.Services.AddSwaggerGen(option =>
 
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<ITokenService, TokenService>();
+builder.Services.AddScoped<IPerfilService, PerfilService>();
+builder.Services.AddScoped<ITipoUsuarioService, TipoUsuarioService>();
+builder.Services.AddScoped<IAtivosService, AtivoService>();
 
 string connectionString = builder.Configuration["ConnectionString:PostgreSql"]
                 ?? throw new ArgumentNullException("ConnectionString:PostgreSql");

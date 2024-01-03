@@ -11,7 +11,7 @@ namespace Br.Com.FiapInvestiments.Api.Controllers
         private readonly IUserService _userService = userService;
 
         [Authorize(Roles = "Administrador")]
-        [HttpPost("Get-Users")]
+        [HttpGet("Get-Users")]
         public async Task<IActionResult> GetUsers()
         {
             try

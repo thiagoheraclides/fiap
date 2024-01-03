@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Numerics;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Text.Json.Serialization;
 
 namespace Br.Com.FiapInvestiments.Domain.Entidades
 {
@@ -19,6 +14,7 @@ namespace Br.Com.FiapInvestiments.Domain.Entidades
 
         public DateTime CriadoEm { get; set; } = DateTime.UtcNow;
 
+        [JsonIgnore(Condition = JsonIgnoreCondition.Always)]
         public virtual ICollection<Usuario>? Usuarios { get; set; }
     }
 }
