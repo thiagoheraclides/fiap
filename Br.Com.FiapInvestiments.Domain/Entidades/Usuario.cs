@@ -2,9 +2,9 @@
 
 namespace Br.Com.FiapInvestiments.Domain.Entidades
 {
-    public partial class Usuario
+    public class Usuario
     {
-        public int? Id { get; set; }
+        public uint? Id { get; set; }
 
         public string Cpf { get; set; } = null!;
 
@@ -13,22 +13,20 @@ namespace Br.Com.FiapInvestiments.Domain.Entidades
         public string Email { get; set; } = null!;
 
         public string Login { get; set; } = null!;
-
-        [JsonIgnore(Condition = JsonIgnoreCondition.Always)]
+        
         public string Senha { get; set; } = null!;
 
         public DateTime UltimoAcesso { get; set; }
 
         [JsonIgnore(Condition = JsonIgnoreCondition.Always)]
-        public int? PerfilId { get; set; }
+        public uint? PerfilId { get; set; }
 
         [JsonIgnore(Condition = JsonIgnoreCondition.Always)]
         public virtual Perfil? Perfil { get; set; }
 
-        [JsonIgnore(Condition = JsonIgnoreCondition.Always)]
-        public int? TipoUsuarioId { get; set; }
-
-        [JsonIgnore(Condition = JsonIgnoreCondition.Always)]
+        
+        public uint? TipoUsuarioId { get; set; }
+        
         public virtual TipoUsuario? TipoUsuario { get; set; }
 
         [JsonIgnore(Condition = JsonIgnoreCondition.Always)]
@@ -42,5 +40,32 @@ namespace Br.Com.FiapInvestiments.Domain.Entidades
 
         [JsonIgnore(Condition = JsonIgnoreCondition.Always)]
         public virtual ICollection<Recomendacao>? RecomendacoesConsultor { get; set; }
+
+        public void Atualizar (Usuario novoUsuario)
+        {
+            try
+            {
+                Cpf = novoUsuario.Cpf;
+                Nome = novoUsuario.Nome;
+                Email = novoUsuario.Email;
+                Perfil = novoUsuario.Perfil;
+                TipoUsuario = novoUsuario.TipoUsuario;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        public void AdicionarTipoUsuario(TipoUsuario tipoUsuario)
+        {
+            TipoUsuario = tipoUsuario;
+        }
+
+        public void AdicionarPerfil(Perfil perfil)
+        {
+            Perfil = perfil;
+        }
     }
 }

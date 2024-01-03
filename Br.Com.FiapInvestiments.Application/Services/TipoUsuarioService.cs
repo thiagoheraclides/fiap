@@ -14,7 +14,7 @@ namespace Br.Com.FiapInvestiments.Application.Services
             try
             {
                 cancellationToken.ThrowIfCancellationRequested();
-                return await _apiContext.TiposUsuario.ToListAsync(cancellationToken);
+                return await _apiContext.TiposUsuarios.ToListAsync(cancellationToken);
             }
             catch (Exception)
             {
@@ -28,7 +28,7 @@ namespace Br.Com.FiapInvestiments.Application.Services
             try
             {
                 cancellationToken.ThrowIfCancellationRequested();
-                return await _apiContext.TiposUsuario
+                return await _apiContext.TiposUsuarios
                     .Where(p =>  p.Id == id).SingleOrDefaultAsync(cancellationToken);
             }
             catch (Exception)

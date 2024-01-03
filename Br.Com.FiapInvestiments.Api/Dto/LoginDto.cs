@@ -1,8 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Br.Com.FiapInvestiments.Api.Dto
+namespace Br.Com.FiapInvestiments.Api.DTO
 {
-    public class LoginDto
+    public class LoginDTO
     {
         [Required(ErrorMessage = "The field {0} is required.")]
         public string Username { get; set; } = null!;

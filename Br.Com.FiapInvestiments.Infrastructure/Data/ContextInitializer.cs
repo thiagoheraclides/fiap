@@ -10,20 +10,20 @@ namespace Br.Com.FiapInvestiments.Infrastructure.Data
             {
                 context.Database.EnsureCreated();
 
-                if (!context.TiposUsuario.Where(p => p.Nome == "Administrador").Any())
+                if (!context.TiposUsuarios.Where(p => p.Nome == "Administrador").Any())
                 {
                     var admin = new TipoUsuario { Nome = "Administrador", Descricao = "Usuário administrador", Status = true, CriadoEm = DateTime.UtcNow };
-                    context.TiposUsuario.Add(admin);
+                    context.TiposUsuarios.Add(admin);
 
                     var consultor = new TipoUsuario { Nome = "Consultor", Descricao = "Usuário consultor", Status = true, CriadoEm = DateTime.UtcNow };
-                    context.TiposUsuario.Add(consultor);
+                    context.TiposUsuarios.Add(consultor);
 
                     var investidor = new TipoUsuario { Nome = "Investidor", Descricao = "Usuário investidor", Status = true, CriadoEm = DateTime.UtcNow };
-                    context.TiposUsuario.Add(investidor);
+                    context.TiposUsuarios.Add(investidor);
 
                     context.SaveChanges();
 
-                    if (!context.Usuario.Where(u => u.Nome == "api-admin").Any())
+                    if (!context.Usuarios.Where(u => u.Nome == "api-admin").Any())
                     {
                         var apiAdmin = new Usuario
                         {
@@ -36,7 +36,7 @@ namespace Br.Com.FiapInvestiments.Infrastructure.Data
                             TipoUsuario = admin,
                         };
 
-                        context.Usuario.Add(apiAdmin);
+                        context.Usuarios.Add(apiAdmin);
                         context.SaveChanges();
                     }
                 }

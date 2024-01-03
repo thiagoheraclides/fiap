@@ -1,4 +1,4 @@
-﻿using Br.Com.FiapInvestiments.Api.Dto;
+﻿using Br.Com.FiapInvestiments.Api.DTO;
 using Br.Com.FiapInvestiments.Application.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -14,7 +14,7 @@ namespace Br.Com.FiapInvestiments.Api.Controllers
 
         [AllowAnonymous]
         [HttpPost("Login")]
-        public async Task<IActionResult> Login([FromBody] LoginDto loginDto)
+        public async Task<IActionResult> Login([FromBody] LoginDTO loginDto)
         {
             try
             {

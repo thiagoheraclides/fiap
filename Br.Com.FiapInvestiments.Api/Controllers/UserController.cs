@@ -1,5 +1,6 @@
-﻿using Br.Com.FiapInvestiments.Api.Dto;
+﻿using Br.Com.FiapInvestiments.Api.DTO;
 using Br.Com.FiapInvestiments.Application.Interfaces;
+using Br.Com.FiapInvestiments.Domain.Entidades;
 using Br.Com.FiapInvestiments.Infrastructure.Data;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -29,43 +30,30 @@ namespace Br.Com.FiapInvestiments.Api.Controllers
             }
         }
 
-
-        public static Dto.Usuario CadatrarUsuario(ApiContext db, Dto.Usuario param)
+        [Authorize(Roles = "Administrador")]
+        [HttpPost("Cadastrar")]
+        public async Task<IActionResult> Cadastrar([FromBody] UsuarioDTO usuarioDTO)
         {
-            var dbTransaction = db.Database.BeginTransaction();
-
             try
             {
-                // Se informado Código ou Login atualizar o registro, senão criar um novo
-                // Esses 2 campos são chave e tem Unique no BD
-                var dataDB =
-                    param.Codigo.HasValue ? db.Usuario.Find(param.Codigo) : !string.IsNullOrEmpty(param.Login) ? db.Usuario.FirstOrDefault(x => x.Login == param.Login)
-                     // Fallback para criar o usuário quando nenhuma das chaves obteve sucesso
-                     ?? new Domain.Entidades.Usuario();
+                var usuario = new Usuario
                 {
-                    dataDB.Id = param.Codigo;
-                    dataDB.Cpf = param.CPF ?? dataDB.Cpf;
-                    dataDB.Nome = param.Nome ?? dataDB.Nome;
-                    dataDB.Email = param.Email ?? dataDB.Email;
-                    dataDB.Login = param.Login ?? dataDB.Login;
-                    dataDB.Senha = param.Senha ?? dataDB.Senha;
-                    dataDB.UltimoAcesso = param.DataUltimoAcesso ?? dataDB.UltimoAcesso;
-                    dataDB.TipoUsuarioId = param.TipoUsuario.Codigo ?? dataDB.TipoUsuarioId;
-                    dataDB.PerfilId = param.PerfilInvestidor.Codigo ?? dataDB.PerfilId;
-                }
-                if (!param.Codigo.HasValue)
-                {
-                    db.Usuario.Add(dataDB);
-                }
-               
-                db.SaveChanges();
-                dbTransaction.Commit();
-                return new Dto.Usuario { Codigo = dataDB.Id };
+                    Cpf = usuarioDTO.CPF,
+                    Nome = usuarioDTO.Nome,
+                    Email = usuarioDTO.Email,
+                    Login = usuarioDTO.Login,
+                    Senha = usuarioDTO.Senha,
+                    TipoUsuarioId = usuarioDTO.TipoUsuarioCodigo,
+                    PerfilId = usuarioDTO.PerfilCodigo
+                };
+
+                var id = await _userService.Cadastrar(usuario);
+                return Ok(new { UsuarioCodigo = id});
             }
-            catch
+            catch (Exception exception)
             {
-                dbTransaction.Rollback();
-                throw;
+
+                return BadRequest($"{exception.Message}");
             }
         }
     }
