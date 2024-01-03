@@ -8,7 +8,7 @@ namespace Br.Com.FiapInvestiments.Domain.Entidades
 {
     public class Pedido
     {
-        public ulong Id { get; set; }
+        public uint? Id { get; set; }
 
         public DateTime CriadoEm { get; set; } = DateTime.UtcNow;
 
@@ -27,5 +27,15 @@ namespace Br.Com.FiapInvestiments.Domain.Entidades
         public uint? AtivoId { get; set; }
 
         public virtual Ativo? Ativo { get; set; }
+
+        public void AdicionarUsuario(Usuario usuario)
+        {
+            Usuario = usuario;
+        }
+
+        public void AdicionarAtivo(Ativo ativo)
+        {
+            Ativo = ativo;
+        }
     }
 }

@@ -5,6 +5,7 @@ using Br.Com.FiapInvestiments.Infrastructure.Data;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
+using System.Drawing;
 
 namespace Br.Com.FiapInvestiments.Api.Controllers
 {
@@ -49,6 +50,64 @@ namespace Br.Com.FiapInvestiments.Api.Controllers
 
                 var id = await _userService.Cadastrar(usuario);
                 return Ok(new { UsuarioCodigo = id});
+            }
+            catch (Exception exception)
+            {
+
+                return BadRequest($"{exception.Message}");
+            }
+        }
+
+
+        [Authorize(Roles = "Administrador")]
+        [HttpPost("OrdemCompra")]
+        public async Task<IActionResult> OrdemCompra([FromBody] PedidoDTO ordemCompra)
+        {
+            try
+            {
+                var pedidoCompra = new Pedido
+                {
+                    Id = ordemCompra.Codigo,
+                    Quantidade = ordemCompra.Quantidade,
+                    Valor = ordemCompra.Valor,
+                    OrdemDeCompra = true,
+                    Observacao = ordemCompra.Observacao,
+                    UsuarioId = ordemCompra.UsuarioInvestidorId,
+                    AtivoId = ordemCompra.AtivoInvestimentoId,
+                    CriadoEm = DateTime.Now
+                };
+
+                var id = await _userService.EnviarOrdemCompra(pedidoCompra);
+                return Ok(new { OrdemCompraCodigo = id });
+            }
+            catch (Exception exception)
+            {
+
+                return BadRequest($"{exception.Message}");
+            }
+        }
+
+
+        [Authorize(Roles = "Administrador")]
+        [HttpPost("OrdemVenda")]
+        public async Task<IActionResult> OrdemVenda([FromBody] PedidoDTO ordemVenda)
+        {
+            try
+            {
+                var pedidoVenda = new Pedido
+                {
+                    Id = ordemVenda.Codigo,
+                    Quantidade = ordemVenda.Quantidade,
+                    Valor = ordemVenda.Valor,
+                    OrdemDeCompra = false,
+                    Observacao = ordemVenda.Observacao,
+                    UsuarioId = ordemVenda.UsuarioInvestidorId,
+                    AtivoId = ordemVenda.AtivoInvestimentoId,
+                    CriadoEm = DateTime.Now
+                };
+
+                var id = await _userService.EnviarOrdemVenda(pedidoVenda);
+                return Ok(new { OrdemVendaCodigo = id });
             }
             catch (Exception exception)
             {
