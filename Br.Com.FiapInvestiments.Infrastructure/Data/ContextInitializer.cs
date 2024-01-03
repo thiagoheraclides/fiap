@@ -23,7 +23,7 @@ namespace Br.Com.FiapInvestiments.Infrastructure.Data
 
                     context.SaveChanges();
 
-                    if (!context.Usuarios.Where(u => u.Nome == "api-admin").Any())
+                    if (!context.Usuario.Where(u => u.Nome == "api-admin").Any())
                     {
                         var apiAdmin = new Usuario
                         {
@@ -36,7 +36,7 @@ namespace Br.Com.FiapInvestiments.Infrastructure.Data
                             TipoUsuario = admin,
                         };
 
-                        context.Usuarios.Add(apiAdmin);
+                        context.Usuario.Add(apiAdmin);
                         context.SaveChanges();
                     }
                 }

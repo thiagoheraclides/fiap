@@ -18,7 +18,7 @@ namespace Br.Com.FiapInvestiments.Infrastructure.Data
             modelBuilder.ApplyConfiguration(new RecomendacaoConfig());            
         }
 
-        public DbSet<Usuario> Usuarios { get; set; }
+        public DbSet<Usuario> Usuario { get; set; }
 
         public DbSet<TipoUsuario> TiposUsuario { get; set; }
 

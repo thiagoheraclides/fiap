@@ -2,9 +2,9 @@
 
 namespace Br.Com.FiapInvestiments.Domain.Entidades
 {
-    public class Usuario
+    public partial class Usuario
     {
-        public uint Id { get; set; }
+        public int? Id { get; set; }
 
         public string Cpf { get; set; } = null!;
 
@@ -20,13 +20,13 @@ namespace Br.Com.FiapInvestiments.Domain.Entidades
         public DateTime UltimoAcesso { get; set; }
 
         [JsonIgnore(Condition = JsonIgnoreCondition.Always)]
-        public uint? PerfilId { get; set; }
+        public int? PerfilId { get; set; }
 
         [JsonIgnore(Condition = JsonIgnoreCondition.Always)]
         public virtual Perfil? Perfil { get; set; }
 
         [JsonIgnore(Condition = JsonIgnoreCondition.Always)]
-        public uint? TipoUsuarioId { get; set; }
+        public int? TipoUsuarioId { get; set; }
 
         [JsonIgnore(Condition = JsonIgnoreCondition.Always)]
         public virtual TipoUsuario? TipoUsuario { get; set; }
