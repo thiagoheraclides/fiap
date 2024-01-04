@@ -28,5 +28,20 @@ namespace Br.Com.FiapInvestiments.Domain.Entidades
 
         public virtual ICollection<Recomendacao>? Recomendacoes { get; set; }
 
+
+        public void Atualizar(Ativo ativo)
+        {
+            Sigla = ativo.Sigla;
+            Nome = ativo.Nome;
+            RentabilidadeEmDias = ativo.RentabilidadeEmDias;
+            ValorRentabilidade = ativo.ValorRentabilidade;
+            EscalaDeRisco = ativo.EscalaDeRisco;
+        }
+
+        public void Desativar()
+        {
+            EncerraEm = DateTime.UtcNow;
+        }
+
     }
 }

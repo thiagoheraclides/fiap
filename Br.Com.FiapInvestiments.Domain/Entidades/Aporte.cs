@@ -19,5 +19,10 @@ namespace Br.Com.FiapInvestiments.Domain.Entidades
         public uint? UsuarioId { get; set; }
 
         public virtual Usuario? Usuario { get; set; }
+
+        public void AdicionarUsuario(Usuario usuario)
+        {
+            Usuario = usuario;
+        }
     }
 }

@@ -4,16 +4,18 @@ namespace Br.Com.FiapInvestiments.Application.Interfaces
 {
     public interface IAtivosService
     {
-        Task Inserir(Ativo ativo, CancellationToken cancellationToken);
+        Task<uint> Atualizar(Ativo ativo, CancellationToken cancellationToken);
 
-        Task Atualizar(Ativo ativo, CancellationToken cancellationToken);
+        Task<uint> Cadastrar(Ativo ativo, CancellationToken cancellationToken);
 
-        Task Inativar(uint uid, CancellationToken cancellationToken);
+        Task Desativar(uint id, CancellationToken cancellationToken);
 
         Task<IEnumerable<Ativo>> Obter(CancellationToken cancellationToken);
 
-        Task<Ativo> ObterPorId(uint uid, CancellationToken cancellationToken);
+        Task<IEnumerable<Ativo>> ObterDisponiveis(CancellationToken cancellationToken);
 
-        Task Remover(uint uid, CancellationToken cancellationToken);
+        Task<Ativo> ObterPorId(uint id, CancellationToken cancellationToken);
+
+        Task Remover(uint id, CancellationToken cancellationToken);
     }
 }
