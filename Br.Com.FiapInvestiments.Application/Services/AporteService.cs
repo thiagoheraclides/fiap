@@ -11,21 +11,19 @@ namespace Br.Com.FiapInvestiments.Application.Services
 
         public async Task<Aporte> EfetuarAporte(Aporte aporte)
         {
-            Usuario solicitante = new();
-
             try
             {
-                solicitante = await _apiContext.Usuarios
-                    .Where(p => p.Id == aporte.UsuarioId).SingleOrDefaultAsync()
+                var solicitante =
+                    await _apiContext.Usuarios.Where(x => x.Id == aporte.UsuarioId).FirstOrDefaultAsync()
                     ?? throw new Exception("Cliente não encontrado!");
+
+                aporte.AdicionarUsuario(solicitante);
 
                 if (solicitante?.TipoUsuario?.Nome == "Administrador")
                     throw new Exception("Operação não permitida!");
 
                 if (aporte.Valor <= default(decimal))
-                    throw new Exception("Necessário informar um valor para aporte.");
-
-                aporte.AdicionarUsuario(solicitante);
+                    throw new Exception("Necessário informar um valor para aporte.");              
 
                 await _apiContext.Aportes.AddAsync(aporte);
                 await _apiContext.SaveChangesAsync();
@@ -35,7 +33,6 @@ namespace Br.Com.FiapInvestiments.Application.Services
             }
             catch (Exception)
             {
-
                 throw;
             }
         }

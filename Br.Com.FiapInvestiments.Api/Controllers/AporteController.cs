@@ -15,7 +15,7 @@ namespace Br.Com.FiapInvestiments.Api.Controllers
 
         [Authorize(Roles = "Consultor, Investidor")]
         [HttpPost("EfetuarAporte")]
-        public async Task<IActionResult> OrdemVenda([FromBody] AporteDTO aporteDTO)
+        public async Task<IActionResult> EfetuarAporte([FromBody] AporteDTO aporteDTO)
         {
             try
             {
