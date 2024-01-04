@@ -53,6 +53,8 @@ builder.Services.AddScoped<ITokenService, TokenService>();
 builder.Services.AddScoped<IPerfilService, PerfilService>();
 builder.Services.AddScoped<ITipoUsuarioService, TipoUsuarioService>();
 builder.Services.AddScoped<IAtivosService, AtivoService>();
+builder.Services.AddScoped<IPedidoService, PedidoService>();
+builder.Services.AddScoped<IAporteService, AporteService>();
 
 string connectionString = builder.Configuration["ConnectionString:PostgreSql"]
                 ?? throw new ArgumentNullException("ConnectionString:PostgreSql");

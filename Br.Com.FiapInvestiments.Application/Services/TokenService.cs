@@ -28,7 +28,7 @@ namespace Br.Com.FiapInvestiments.Application.Services
                         new(ClaimTypes.Role, usuario.TipoUsuario.Nome)
 
                     }),
-                    Expires = DateTime.UtcNow.AddMinutes(3),
+                    Expires = DateTime.UtcNow.AddMinutes(30),
                     SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(privateKey), SecurityAlgorithms.HmacSha256Signature)
                 };
 
