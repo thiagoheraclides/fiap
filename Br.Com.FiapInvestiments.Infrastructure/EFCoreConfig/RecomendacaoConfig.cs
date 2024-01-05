@@ -16,7 +16,8 @@ namespace Br.Com.FiapInvestiments.Infrastructure.EFCoreConfig
 
             builder.Property(p => p.Id)
                 .HasColumnName("CD_RECOMENDACAO_INVESTIMENTO")
-                .ValueGeneratedOnAdd()
+                .HasColumnType("BIGINT")
+                .UseIdentityAlwaysColumn()
                 .IsRequired();
 
             builder.Property(p => p.UsuarioId)

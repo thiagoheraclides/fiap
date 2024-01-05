@@ -16,7 +16,8 @@ namespace Br.Com.FiapInvestiments.Infrastructure.EFCoreConfig
 
             builder.Property(tp => tp.Id)
                 .HasColumnName("CD_TIPO_USUARIO")
-                .ValueGeneratedOnAdd()
+                .HasColumnType("INTEGER")
+                .UseIdentityAlwaysColumn()
                 .IsRequired();
 
             builder.Property(tp => tp.Nome)

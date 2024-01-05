@@ -18,16 +18,21 @@ namespace Br.Com.FiapInvestiments.Infrastructure.Migrations
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("ProductVersion", "8.0.0")
+                .HasAnnotation("Proxies:ChangeTracking", false)
+                .HasAnnotation("Proxies:CheckEquality", false)
+                .HasAnnotation("Proxies:LazyLoading", true)
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
             modelBuilder.Entity("Br.Com.FiapInvestiments.Domain.Entidades.Aporte", b =>
                 {
-                    b.Property<decimal>("Id")
+                    b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("numeric(20,0)")
+                        .HasColumnType("BIGINT")
                         .HasColumnName("CD_APORTE_CONTA");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityAlwaysColumn(b.Property<long>("Id"));
 
                     b.Property<DateTime>("CriadoEm")
                         .HasColumnType("timestamp with time zone")
@@ -39,8 +44,8 @@ namespace Br.Com.FiapInvestiments.Infrastructure.Migrations
                         .HasColumnType("character varying(500)")
                         .HasColumnName("DS_OBSERVACAO");
 
-                    b.Property<long>("UsuarioId")
-                        .HasColumnType("bigint")
+                    b.Property<int>("UsuarioId")
+                        .HasColumnType("INTEGER")
                         .HasColumnName("CD_USUARIO_INVESTIDOR");
 
                     b.Property<decimal>("Valor")
@@ -58,12 +63,12 @@ namespace Br.Com.FiapInvestiments.Infrastructure.Migrations
 
             modelBuilder.Entity("Br.Com.FiapInvestiments.Domain.Entidades.Ativo", b =>
                 {
-                    b.Property<long>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint")
+                        .HasColumnType("INTEGER")
                         .HasColumnName("CD_ATIVO_INVESTIMENTO");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityAlwaysColumn(b.Property<int>("Id"));
 
                     b.Property<DateTime>("CriadoEm")
                         .HasColumnType("timestamp with time zone")
@@ -105,13 +110,15 @@ namespace Br.Com.FiapInvestiments.Infrastructure.Migrations
 
             modelBuilder.Entity("Br.Com.FiapInvestiments.Domain.Entidades.Pedido", b =>
                 {
-                    b.Property<decimal>("Id")
+                    b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("numeric(20,0)")
+                        .HasColumnType("BIGINT")
                         .HasColumnName("CD_PEDIDO");
 
-                    b.Property<long>("AtivoId")
-                        .HasColumnType("bigint")
+                    NpgsqlPropertyBuilderExtensions.UseIdentityAlwaysColumn(b.Property<long>("Id"));
+
+                    b.Property<int>("AtivoId")
+                        .HasColumnType("INTEGER")
                         .HasColumnName("CD_ATIVO_INVESTIMENTO");
 
                     b.Property<DateTime>("CriadoEm")
@@ -132,8 +139,8 @@ namespace Br.Com.FiapInvestiments.Infrastructure.Migrations
                         .HasColumnType("bigint")
                         .HasColumnName("QT_PEDIDO");
 
-                    b.Property<long>("UsuarioId")
-                        .HasColumnType("bigint")
+                    b.Property<int>("UsuarioId")
+                        .HasColumnType("INTEGER")
                         .HasColumnName("CD_USUARIO_INVESTIDOR");
 
                     b.Property<decimal>("Valor")
@@ -154,12 +161,12 @@ namespace Br.Com.FiapInvestiments.Infrastructure.Migrations
 
             modelBuilder.Entity("Br.Com.FiapInvestiments.Domain.Entidades.Perfil", b =>
                 {
-                    b.Property<long>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint")
+                        .HasColumnType("INTEGER")
                         .HasColumnName("CD_PERFIL_INVESTIDOR");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityAlwaysColumn(b.Property<int>("Id"));
 
                     b.Property<DateTime>("CriadoEm")
                         .HasColumnType("timestamp with time zone")
@@ -191,17 +198,17 @@ namespace Br.Com.FiapInvestiments.Infrastructure.Migrations
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint")
+                        .HasColumnType("BIGINT")
                         .HasColumnName("CD_RECOMENDACAO_INVESTIMENTO");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityAlwaysColumn(b.Property<long>("Id"));
 
-                    b.Property<long>("AtivoId")
-                        .HasColumnType("bigint")
+                    b.Property<int>("AtivoId")
+                        .HasColumnType("INTEGER")
                         .HasColumnName("CD_ATIVO_INVESTIMENTO");
 
-                    b.Property<long>("ConsultorId")
-                        .HasColumnType("bigint")
+                    b.Property<int>("ConsultorId")
+                        .HasColumnType("INTEGER")
                         .HasColumnName("CD_USUARIO_CONSULTOR");
 
                     b.Property<DateTime>("Data")
@@ -222,8 +229,8 @@ namespace Br.Com.FiapInvestiments.Infrastructure.Migrations
                         .HasColumnType("bigint")
                         .HasColumnName("NR_TEMPO_DIAS_RETABILIDADE");
 
-                    b.Property<long>("UsuarioId")
-                        .HasColumnType("bigint")
+                    b.Property<int>("UsuarioId")
+                        .HasColumnType("INTEGER")
                         .HasColumnName("CD_USUARIO_INVESTIDOR");
 
                     b.Property<decimal>("Valor")
@@ -247,12 +254,12 @@ namespace Br.Com.FiapInvestiments.Infrastructure.Migrations
 
             modelBuilder.Entity("Br.Com.FiapInvestiments.Domain.Entidades.TipoUsuario", b =>
                 {
-                    b.Property<long>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint")
+                        .HasColumnType("INTEGER")
                         .HasColumnName("CD_TIPO_USUARIO");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityAlwaysColumn(b.Property<int>("Id"));
 
                     b.Property<DateTime>("CriadoEm")
                         .HasColumnType("timestamp with time zone")
@@ -282,12 +289,12 @@ namespace Br.Com.FiapInvestiments.Infrastructure.Migrations
 
             modelBuilder.Entity("Br.Com.FiapInvestiments.Domain.Entidades.Usuario", b =>
                 {
-                    b.Property<long>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint")
+                        .HasColumnType("INTEGER")
                         .HasColumnName("CD_USUARIO");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityAlwaysColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Cpf")
                         .IsRequired()
@@ -313,8 +320,8 @@ namespace Br.Com.FiapInvestiments.Infrastructure.Migrations
                         .HasColumnType("character varying(300)")
                         .HasColumnName("NM_USUARIO");
 
-                    b.Property<long?>("PerfilId")
-                        .HasColumnType("bigint")
+                    b.Property<int?>("PerfilId")
+                        .HasColumnType("INTEGER")
                         .HasColumnName("CD_PERFIL_INVESTIDOR");
 
                     b.Property<string>("Senha")
@@ -323,8 +330,8 @@ namespace Br.Com.FiapInvestiments.Infrastructure.Migrations
                         .HasColumnType("character varying(200)")
                         .HasColumnName("TX_SENHA");
 
-                    b.Property<long>("TipoUsuarioId")
-                        .HasColumnType("bigint")
+                    b.Property<int>("TipoUsuarioId")
+                        .HasColumnType("INTEGER")
                         .HasColumnName("CD_TIPO_USUARIO");
 
                     b.Property<DateTime>("UltimoAcesso")

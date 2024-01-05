@@ -4,7 +4,7 @@ namespace Br.Com.FiapInvestiments.Domain.Entidades
 {
     public class Usuario
     {
-        public uint? Id { get; set; }
+        public uint Id { get; set; }
 
         public string Cpf { get; set; } = null!;
 

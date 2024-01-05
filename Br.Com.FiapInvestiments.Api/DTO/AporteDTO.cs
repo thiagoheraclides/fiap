@@ -2,7 +2,7 @@
 {
     public class AporteDTO
     {
-        public uint? SolicitanteId { get; set; }
+        public uint SolicitanteId { get; set; }
 
         public decimal Valor { get; set; } = default;
 

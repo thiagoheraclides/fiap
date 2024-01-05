@@ -8,7 +8,7 @@ namespace Br.Com.FiapInvestiments.Domain.Entidades
 {
     public class Recomendacao
     {
-        public uint Id { get; set; }
+        public ulong Id { get; set; }
 
         public decimal Valor { get; set; } = default;
 
@@ -20,15 +20,15 @@ namespace Br.Com.FiapInvestiments.Domain.Entidades
 
         public string Observacao { get; set; } = null!;
 
-        public uint? UsuarioId { get; set; }
+        public uint UsuarioId { get; set; }
 
         public virtual Usuario? Usuario { get; set; }
 
-        public uint? ConsultorId { get; set; }
+        public uint ConsultorId { get; set; }
 
         public virtual Usuario? Consultor { get; set; }
 
-        public uint? AtivoId { get; set; }
+        public uint AtivoId { get; set; }
 
         public virtual Ativo? Ativo { get; set; }
 

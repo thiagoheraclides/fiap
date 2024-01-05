@@ -16,7 +16,8 @@ namespace Br.Com.FiapInvestiments.Infrastructure.EFCoreConfig
 
             builder.Property(p => p.Id)
                 .HasColumnName("CD_PERFIL_INVESTIDOR")
-                .ValueGeneratedOnAdd()
+                .HasColumnType("INTEGER")
+                .UseIdentityAlwaysColumn()
                 .IsRequired();
 
             builder.Property(p => p.Nome)

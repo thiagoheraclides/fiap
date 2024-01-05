@@ -21,4 +21,8 @@
     <ProjectReference Include="..\Br.Com.FiapInvestiments.Domain\Br.Com.FiapInvestiments.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Migrations\" />
+  </ItemGroup>
+
 </Project>

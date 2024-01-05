@@ -16,8 +16,8 @@ namespace Br.Com.FiapInvestiments.Infrastructure.Migrations
                 name: "TB_ATIVO_INVESTIMENTO",
                 columns: table => new
                 {
-                    CD_ATIVO_INVESTIMENTO = table.Column<long>(type: "bigint", nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    CD_ATIVO_INVESTIMENTO = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityAlwaysColumn),
                     SG_ATIVO_INVESTIMENTO = table.Column<string>(type: "character varying(5)", maxLength: 5, nullable: false),
                     NM_ATIVO_INVESTIMENTO = table.Column<string>(type: "character varying(200)", maxLength: 200, nullable: false),
                     DT_REGISTRO = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
@@ -35,8 +35,8 @@ namespace Br.Com.FiapInvestiments.Infrastructure.Migrations
                 name: "TB_PERFIL_INVESTIDOR",
                 columns: table => new
                 {
-                    CD_PERFIL_INVESTIDOR = table.Column<long>(type: "bigint", nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    CD_PERFIL_INVESTIDOR = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityAlwaysColumn),
                     NM_PERFIL_INVESTIDOR = table.Column<string>(type: "character varying(20)", maxLength: 20, nullable: false),
                     DS_PERFIL_INVESTIDOR = table.Column<string>(type: "character varying(200)", maxLength: 200, nullable: false),
                     FL_ATIVO = table.Column<bool>(type: "boolean", nullable: false),
@@ -51,8 +51,8 @@ namespace Br.Com.FiapInvestiments.Infrastructure.Migrations
                 name: "TB_TIPO_USUARIO",
                 columns: table => new
                 {
-                    CD_TIPO_USUARIO = table.Column<long>(type: "bigint", nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    CD_TIPO_USUARIO = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityAlwaysColumn),
                     NM_TIPO_USUARIO = table.Column<string>(type: "character varying(20)", maxLength: 20, nullable: false),
                     DS_TIPO_USUARIO = table.Column<string>(type: "character varying(200)", maxLength: 200, nullable: false),
                     FL_ATIVO = table.Column<bool>(type: "boolean", nullable: false),
@@ -67,16 +67,16 @@ namespace Br.Com.FiapInvestiments.Infrastructure.Migrations
                 name: "TB_USUARIO",
                 columns: table => new
                 {
-                    CD_USUARIO = table.Column<long>(type: "bigint", nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    CD_USUARIO = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityAlwaysColumn),
                     NR_CPF = table.Column<string>(type: "character varying(11)", maxLength: 11, nullable: false),
                     NM_USUARIO = table.Column<string>(type: "character varying(300)", maxLength: 300, nullable: false),
                     DS_EMAIL = table.Column<string>(type: "character varying(300)", maxLength: 300, nullable: false),
                     DS_LOGIN = table.Column<string>(type: "character varying(50)", maxLength: 50, nullable: false),
                     TX_SENHA = table.Column<string>(type: "character varying(200)", maxLength: 200, nullable: false),
                     DT_ULTIMO_ACESSO = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
-                    CD_PERFIL_INVESTIDOR = table.Column<long>(type: "bigint", nullable: true),
-                    CD_TIPO_USUARIO = table.Column<long>(type: "bigint", nullable: false)
+                    CD_PERFIL_INVESTIDOR = table.Column<int>(type: "INTEGER", nullable: true),
+                    CD_TIPO_USUARIO = table.Column<int>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -98,11 +98,12 @@ namespace Br.Com.FiapInvestiments.Infrastructure.Migrations
                 name: "TB_APORTE_CONTA",
                 columns: table => new
                 {
-                    CD_APORTE_CONTA = table.Column<decimal>(type: "numeric(20,0)", nullable: false),
+                    CD_APORTE_CONTA = table.Column<long>(type: "BIGINT", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityAlwaysColumn),
                     VL_APORTE_CONTA = table.Column<decimal>(type: "numeric", nullable: false),
                     DT_APORTE_CONTA = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
                     DS_OBSERVACAO = table.Column<string>(type: "character varying(500)", maxLength: 500, nullable: false),
-                    CD_USUARIO_INVESTIDOR = table.Column<long>(type: "bigint", nullable: false)
+                    CD_USUARIO_INVESTIDOR = table.Column<int>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -119,14 +120,15 @@ namespace Br.Com.FiapInvestiments.Infrastructure.Migrations
                 name: "TB_PEDIDO",
                 columns: table => new
                 {
-                    CD_PEDIDO = table.Column<decimal>(type: "numeric(20,0)", nullable: false),
+                    CD_PEDIDO = table.Column<long>(type: "BIGINT", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityAlwaysColumn),
                     DT_PEDIDO = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
                     QT_PEDIDO = table.Column<long>(type: "bigint", nullable: false),
                     VL_PEDIDO = table.Column<decimal>(type: "numeric", nullable: false),
                     FL_ORDEM_COMPRA = table.Column<bool>(type: "boolean", nullable: false),
                     DS_OBSERVACAO = table.Column<string>(type: "character varying(500)", maxLength: 500, nullable: false),
-                    CD_USUARIO_INVESTIDOR = table.Column<long>(type: "bigint", nullable: false),
-                    CD_ATIVO_INVESTIMENTO = table.Column<long>(type: "bigint", nullable: false)
+                    CD_USUARIO_INVESTIDOR = table.Column<int>(type: "INTEGER", nullable: false),
+                    CD_ATIVO_INVESTIMENTO = table.Column<int>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -149,16 +151,16 @@ namespace Br.Com.FiapInvestiments.Infrastructure.Migrations
                 name: "TB_RECOMENDACAO_INVESTIMENTO",
                 columns: table => new
                 {
-                    CD_RECOMENDACAO_INVESTIMENTO = table.Column<long>(type: "bigint", nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    CD_RECOMENDACAO_INVESTIMENTO = table.Column<long>(type: "BIGINT", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityAlwaysColumn),
                     VL_COMPRA_SIMULACAO = table.Column<decimal>(type: "numeric", nullable: false),
                     QT_COMPRA_SIMULACAO = table.Column<long>(type: "bigint", nullable: false),
                     DT_COMPRA_SIMULACAO = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
                     NR_TEMPO_DIAS_RETABILIDADE = table.Column<long>(type: "bigint", nullable: false),
                     DS_OBSERVACAO = table.Column<string>(type: "character varying(500)", maxLength: 500, nullable: false),
-                    CD_USUARIO_INVESTIDOR = table.Column<long>(type: "bigint", nullable: false),
-                    CD_USUARIO_CONSULTOR = table.Column<long>(type: "bigint", nullable: false),
-                    CD_ATIVO_INVESTIMENTO = table.Column<long>(type: "bigint", nullable: false)
+                    CD_USUARIO_INVESTIDOR = table.Column<int>(type: "INTEGER", nullable: false),
+                    CD_USUARIO_CONSULTOR = table.Column<int>(type: "INTEGER", nullable: false),
+                    CD_ATIVO_INVESTIMENTO = table.Column<int>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
                 {
