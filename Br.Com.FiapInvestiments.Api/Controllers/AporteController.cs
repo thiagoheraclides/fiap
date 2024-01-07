@@ -1,7 +1,9 @@
 ﻿using Br.Com.FiapInvestiments.Api.DTO;
+using Br.Com.FiapInvestiments.Api.Extensions;
 using Br.Com.FiapInvestiments.Application.Interfaces;
 using Br.Com.FiapInvestiments.Application.Services;
 using Br.Com.FiapInvestiments.Domain.Entidades;
+using log4net;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -9,9 +11,10 @@ namespace Br.Com.FiapInvestiments.Api.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class AporteController(IAporteService aporteService) : ControllerBase
+    public class AporteController(IAporteService aporteService, ILog logger) : ControllerBase
     {
         private readonly IAporteService _aporteService = aporteService;
+        private readonly ILog _logger = logger;
 
         [Authorize(Roles = "Consultor, Investidor")]
         [HttpPost("EfetuarAporte")]

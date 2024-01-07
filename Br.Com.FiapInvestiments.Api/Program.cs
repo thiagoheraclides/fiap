@@ -1,3 +1,5 @@
+using Br.Com.FiapInvestiments.Api.Extensions;
+using Br.Com.FiapInvestiments.Api.Resources.Middleware;
 using Br.Com.FiapInvestiments.Api.Seed;
 using Br.Com.FiapInvestiments.Application.Interfaces;
 using Br.Com.FiapInvestiments.Application.Services;
@@ -87,6 +89,8 @@ builder.Services
         };
     });
 
+builder.Services.AddLog4net();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -102,6 +106,8 @@ app.UseHttpsRedirection();
 app.UseAuthentication();
 
 app.UseAuthorization();
+
+app.UseMiddleware<HttpLoggingMiddleware>();
 
 app.MapControllers();
 

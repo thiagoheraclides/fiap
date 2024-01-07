@@ -1,5 +1,7 @@
 ﻿using Br.Com.FiapInvestiments.Api.DTO;
+using Br.Com.FiapInvestiments.Api.Extensions;
 using Br.Com.FiapInvestiments.Application.Interfaces;
+using log4net;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -10,12 +12,13 @@ namespace Br.Com.FiapInvestiments.Api.Controllers
     public class AccountController(IUserService userService, ITokenService tokenService) : ControllerBase
     {
         private readonly IUserService _userService = userService;
-        private readonly ITokenService _tokenService = tokenService;
+        private readonly ITokenService _tokenService = tokenService;        
 
         [AllowAnonymous]
         [HttpPost("Login")]
         public async Task<IActionResult> Login([FromBody] LoginDTO loginDto)
         {
+
             try
             {
                 if (!ModelState.IsValid)
@@ -34,7 +37,7 @@ namespace Br.Com.FiapInvestiments.Api.Controllers
             }
             catch (Exception exception)
             {
-
+                
                 return BadRequest(exception.Message);
             }            
         }
