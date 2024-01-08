@@ -16,20 +16,20 @@ namespace Br.Com.FiapInvestiments.Api.Controllers
         private readonly IUserService _userService = userService;
         private readonly ApiContext _apiContext = apiContext;
 
-        [Authorize(Roles = "Administrador")]
-        [HttpGet("Get-Users")]
-        public async Task<IActionResult> GetUsers()
-        {
-            try
-            {
-                return Ok(await _userService.GetUsers());
-            }
-            catch (Exception exception)
-            {
+        //[Authorize(Roles = "Administrador")]
+        //[HttpGet("Get-Users")]
+        //public async Task<IActionResult> GetUsers()
+        //{
+        //    try
+        //    {
+        //        return Ok(await _userService.GetUsers());
+        //    }
+        //    catch (Exception exception)
+        //    {
 
-                return BadRequest(exception.Message);
-            }
-        }
+        //        return BadRequest(exception.Message);
+        //    }
+        //}
 
         [Authorize(Roles = "Administrador")]
         [HttpPost("Cadastrar")]

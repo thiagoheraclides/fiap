@@ -22,4 +22,8 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Br.Com.FiapInvestiments.Api\Br.Com.FiapInvestiments.Api.csproj" />
+  </ItemGroup>
+
 </Project>
